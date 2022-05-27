@@ -6,12 +6,14 @@ const props = defineProps(['path', 'folders']);
 const folders = computed(() => {
   const newFolders = [];
 
-  for (const item of props.folders) {
-    var itemPath = props.path + item;
+  for (const itemPath of props.folders) {
+    var fullPath = "/" + itemPath;
+    var pathParts = fullPath.split('/').filter(n => n)
+    var item = pathParts[pathParts.length - 1]
 
     newFolders.push({
       item: item,
-      path: itemPath,
+      path: fullPath,
     });
   }
 

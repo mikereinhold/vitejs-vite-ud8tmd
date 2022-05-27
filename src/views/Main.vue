@@ -98,12 +98,6 @@ function load_path(new_path, startAfter = '', maxVideos = settings.defaultPageSi
 </template>
 
 <style scoped>
-#main {
-  display: flex;
-  min-height: 60vh;
-  flex-direction: column;
-}
-
 #content {
   display:flex;
 }
@@ -119,6 +113,8 @@ function load_path(new_path, startAfter = '', maxVideos = settings.defaultPageSi
 }
 
 #folderPanel {
+  width:15vw;
+  background-color: transparent;
 }
 
 #videoPanel {

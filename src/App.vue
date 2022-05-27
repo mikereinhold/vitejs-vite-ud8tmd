@@ -40,6 +40,7 @@
 
 #window {
   flex: 1 0 auto;
+  background-color: #eee;
 }
 
 #header {

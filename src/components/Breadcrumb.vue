@@ -8,7 +8,7 @@ var breadcrumb = computed(() => {
 
   pathParts.forEach(function (item, index) {
     if(index < pathParts.length - 1){
-      var path = pathParts.slice(0, index).join('/');
+      var path = "/" + pathParts.slice(0, index-1).join('/');
 
       result.push({
         item: item,
