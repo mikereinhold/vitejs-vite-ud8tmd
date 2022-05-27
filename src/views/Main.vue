@@ -109,7 +109,8 @@ function load_path(new_path, startAfter = '', maxVideos = settings.defaultPageSi
 }
 
 #spinner {
-  margin: 100px;
+  margin-top: 30px;
+  padding-right: 20px;
 }
 
 #folderPanel {

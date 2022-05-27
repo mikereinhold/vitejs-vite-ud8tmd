@@ -114,11 +114,11 @@ if(props.videoId) {
 }
 
 .player-panel {
-  padding: 1vh 10vw 2vh 10vw;
+  padding: 1vh 10vw 2vh 0vw;
 }
 .video-placeholder {
   font-style: italic;
-  margin-left: 10px;
+  margin-right: 15vw;
   margin-top: 20px;
   color: #ccc;
 }
