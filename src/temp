@@ -1,0 +1,100 @@
+<script setup>
+import { ref, reactive } from 'vue';
+import Folder from '../components/Folder.vue';
+
+defineProps({
+  bucket: String,
+});
+
+const state = reactive({
+  path: '',
+  files: [],
+  folders: [],
+  more: false,
+});
+
+const browseUrl =
+  'https://6jy005gdrj.execute-api.us-east-1.amazonaws.com/Browse?';
+
+function load_path(new_path) {
+  state.path = new_path;
+
+  fetch(
+    browseUrl +
+      new URLSearchParams({
+        path: new_path,
+        startAfter: '',
+      }),
+    {
+      method: 'get',
+    }
+  )
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json);
+      json.files.forEach((item) => {
+        state.files.push(item);
+      });
+      json.folders.forEach((item) => {
+        state.folders.push(item);
+      });
+      state.more = json.more;
+    })
+    .catch((err) => {
+      alert('Error: ' + err);
+    });
+}
+load_path('');
+</script>
+
+<template>
+  <h1>Video on Demand Streaming Browser</h1>
+
+  <p>Browsing videos from s3://{{ bucket }}/{{ state.path }}</p>
+
+  <hr />
+  <div class="container">
+    <div class="panel std-space">
+      <li v-for="folder in state.folders">
+        <Folder path="state.path" folder="folder" />
+      </li>
+    </div>
+
+    <div class="main std-space">
+      <li v-for="file in state.files">
+        {{ file }}
+      </li>
+      <p v-if="more">Load more...</p>
+    </div>
+  </div>
+  <hr />
+  <p>
+    For use with the
+    <a
+      href="https://aws.amazon.com/solutions/implementations/video-on-demand-on-aws/"
+      >AWS Video on Demand on AWS Solution Implementation</a
+    >
+  </p>
+</template>
+
+<style scoped>
+a {
+  color: #42b983;
+}
+
+.container {
+  display: flex;
+}
+
+.panel li {
+  list-style: none;
+}
+
+.main {
+}
+
+.std-space {
+  margin: 5px;
+  padding: 5px;
+}
+</style>

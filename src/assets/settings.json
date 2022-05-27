@@ -1,0 +1,5 @@
+{
+  "browseUrl": "https://6jy005gdrj.execute-api.us-east-1.amazonaws.com/Browse",
+  "watchUrl": "https://6jy005gdrj.execute-api.us-east-1.amazonaws.com/Watch",
+  "defaultPageSize": 10
+}
