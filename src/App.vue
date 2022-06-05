@@ -10,8 +10,7 @@
     <router-view id="window" :key="$route.path" />
     <div id="footer">
       <span>
-        For use with the
-        <a href="https://aws.amazon.com/solutions/implementations/video-on-demand-on-aws/">AWS Video on Demand on AWS Solution Implementation</a>
+        For use with the <a href="https://aws.amazon.com/solutions/implementations/video-on-demand-on-aws/">AWS Video on Demand on AWS Solution Implementation</a>
       </span>      
     </div>
   </div>
@@ -47,9 +46,7 @@
   box-shadow: 0px 2px
 }
 
-#footer {
-  display: flex;
-}
+#footer {}
 
 body {
   margin: 0px;
