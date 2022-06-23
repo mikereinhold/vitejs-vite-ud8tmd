@@ -12,6 +12,10 @@ const props = defineProps({
     type: String,
     required: true
   },
+  authHeaders: {
+    type: Object,
+    required: true
+  },
   more: Boolean,
   loadingMore: Boolean,
 });
@@ -43,6 +47,7 @@ fetch(
       }),
     {
       method: 'get',
+      headers: props.authHeaders
     }
   )
     .then((response) => response.json())

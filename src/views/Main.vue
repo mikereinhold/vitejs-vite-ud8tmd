@@ -1,5 +1,6 @@
 <script setup>
 import { computed, reactive } from 'vue';
+import { useCookies } from 'vue3-cookies';
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue';
 import Breadcrumb from '../components/Breadcrumb.vue';
 import FolderPanel from '../components/FolderPanel.vue';
@@ -24,6 +25,16 @@ const path = computed(() => {
   return result;
 });
 
+const { cookies } = useCookies()
+const authHeaders = computed(() => {
+  var userId = cookies.get(settings.lastAuthUserCookie)
+  var accessToken = cookies.get(settings.accessTokenPrefix + userId + settings.accessTokenPostfix)
+
+  return {
+    Authorization: `Bearer ${accessToken}`
+  }
+})
+
 const state = reactive({
   last: '',
   files: [],
@@ -43,6 +54,7 @@ function load_path(new_path, startAfter = '', maxVideos = settings.defaultPageSi
       }),
     {
       method: 'get',
+      headers: authHeaders.value
     }
   )
     .then((response) => response.json())
@@ -91,7 +103,7 @@ function load_path(new_path, startAfter = '', maxVideos = settings.defaultPageSi
 
       <div id="videoPanel">
         <!-- Video list -->
-        <VideoPanel :path="path" :files="state.files" :videoId="props.videoId" :apiEndpoint="settings.watchUrl" :more="state.more" :loadingMore="state.loadingMore" @load-more="state.loadingMore=true; load_path(path, startAfter=state.last)"/>
+        <VideoPanel :path="path" :files="state.files" :videoId="props.videoId" :apiEndpoint="settings.watchUrl" :authHeaders="authHeaders" :more="state.more" :loadingMore="state.loadingMore" @load-more="state.loadingMore=true; load_path(path, startAfter=state.last)"/>
       </div>
     </div>
   </div>

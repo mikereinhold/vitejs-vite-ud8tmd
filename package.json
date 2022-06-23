@@ -10,7 +10,8 @@
   "dependencies": {
     "vue": "^3.2.25",
     "vue-router": "^4",
-    "vue-spinner": "^1"
+    "vue-spinner": "^1",
+    "vue3-cookies": "^1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.1",

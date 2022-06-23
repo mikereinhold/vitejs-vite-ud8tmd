@@ -1,5 +1,8 @@
 {
-  "browseUrl": "https://6jy005gdrj.execute-api.us-east-1.amazonaws.com/Browse",
-  "watchUrl": "https://6jy005gdrj.execute-api.us-east-1.amazonaws.com/Watch",
-  "defaultPageSize": 10
+  "browseUrl": "/api/browse",
+  "watchUrl": "/api/watch",
+  "defaultPageSize": 10,
+  "lastAuthUserCookie": "CognitoIdentityServiceProvider.57ric8a0u2ohs4eroafrmhemb5.LastAuthUser",
+  "accessTokenPrefix": "CognitoIdentityServiceProvider.57ric8a0u2ohs4eroafrmhemb5.",
+  "accessTokenPostfix": ".accessToken"
 }
